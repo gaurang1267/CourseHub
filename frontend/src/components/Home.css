@@ -1,0 +1,45 @@
+.context {
+    position: absolute;
+    max-width: 600px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 999;
+}
+
+.context h1 {
+    text-align: center;
+    color: #fff;
+    font-size: 40px;
+    margin-bottom: 10px;
+}
+
+.context span {
+    text-align: center;
+    color: #fff;
+    font-size: 20px;
+}
+
+
+.context__link:link,
+.context__link:visited {
+    text-decoration: none;
+    padding: 15px 40px;
+    margin-top: 30px;
+    color: #000;
+    background-color: #fff;
+    border-radius: 6px;
+    display: inline-block;
+    border: none;
+    cursor: pointer;
+}
+
+.context__link:hover {
+    cursor: pointer;
+    scale: 1.05;
+    box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.2);
+    transition: all 0.25s;
+}

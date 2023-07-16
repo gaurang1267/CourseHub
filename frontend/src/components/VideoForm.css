@@ -1,0 +1,89 @@
+.form {
+    width: 55%;
+    margin: auto;
+    /* border: 3px solid black; */
+    display: flex;
+    flex-direction: column;
+    /* justify-content: center; */
+    /* align-items: center; */
+}
+
+.form h1 {
+    margin-top: 100px;
+    margin-bottom: 30px;
+}
+
+.form p {
+    margin-bottom: 30px;
+}
+
+.form label,
+.form input,
+.form textarea {
+    display: block;
+    width: 100%;
+}
+
+.form input,
+.form textarea {
+    font: inherit;
+}
+
+.input_container {
+    border: 1px solid black;
+    display: block;
+}
+
+input[type=file]::file-selector-button {
+    background-color: #fff;
+    font: inherit;
+    color: #000;
+    border: 0px;
+    border-right: 1px solid black;
+    padding: 10px 15px;
+    margin-right: 20px;
+    transition: .5s;
+}
+
+input[type=file] {
+    margin: 0 !important;
+    padding: 0 !important;
+}
+
+input[type=file]::file-selector-button:hover {
+    background-color: #eee;
+    border: 0px;
+    border-right: 1px solid black;
+}
+
+
+
+.form--actions {
+    display: flex;
+    gap: 1rem;
+    justify-content: flex-end;
+}
+
+.form--actions button {
+    font: inherit;
+    cursor: pointer;
+    padding: 0.5rem 1.5rem;
+    margin-bottom: 30px;
+    border-radius: 4px;
+    background-color: #00b4d8;
+    color: black;
+    border: none;
+}
+
+.form--actions button[type='button'] {
+    background-color: #00b4d8;
+    color: black;
+}
+
+.form--actions button:hover {
+    background-color: aqua;
+}
+
+.form--actions button[type='button']:hover {
+    background-color: aqua;
+}

@@ -1,0 +1,38 @@
+.artists--container {
+    padding: 150px 100px;
+}
+
+.artists--container h1 {
+    margin-bottom: 50px;
+}
+
+.artists--list {
+    list-style: none;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 60px;
+}
+
+.artists--item span {
+    margin-right: 20px;
+    font-weight: 500;
+}
+
+.artists--item button {
+    background-color: #2dc653;
+    outline: 0;
+    border: 0;
+    border-radius: 3px;
+    padding: 10px 20px;
+    margin-top: 20px;
+    font: inherit;
+    color: #f7f7f7;
+}
+
+.artists--item button:hover {
+    cursor: pointer;
+    transform: translateY(-2px);
+    box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.2);
+    transition: all 0.2s;
+}

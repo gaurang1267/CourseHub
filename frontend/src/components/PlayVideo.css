@@ -1,0 +1,75 @@
+.player {
+    text-align: center;
+    width: 75%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.player--error {
+    font-size: 35px;
+    /* text-align: center; */
+
+}
+
+.playerWrapper {
+    position: relative;
+    /* padding-top: 56.25%; */
+    box-shadow: 0px 0px 50px 0px rgba(0, 0, 0, 0.7);
+    border-radius: 20px;
+    margin-top: 100px !important;
+    margin: auto;
+    margin-bottom: 21px;
+    height: 500px !important;
+    width: 800px;
+}
+
+.reactPlayer {
+    position: absolute;
+    top: 0;
+    left: 0;
+    border-radius: 20px;
+    overflow: hidden;
+}
+
+.reactPlayer button {
+    outline: none !important;
+    border: none;
+    background-color: transparent;
+}
+
+.reactPlayer button:hover {
+    cursor: pointer;
+}
+
+.btnSs {
+    max-width: 361px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10;
+}
+
+@media(max-width: 800px) {
+    .playerWrapper {
+        width: 80%;
+        transition: all 1s;
+    }
+}
+
+@media(max-width: 768px) {
+    .btnSmall {
+        width: 150px !important;
+        font-size: 13px !important;
+        padding: 4px 10px !important;
+        gap: 0px !important;
+    }
+}
+
+@media(max-width: 451px) {
+    .playerWrapper {
+        margin-bottom: 0px;
+    }
+}

@@ -1,0 +1,94 @@
+.transactions--container {
+    padding: 150px 100px;
+}
+
+.transactions--container h1 {
+    margin-bottom: 50px;
+    font-size: 32px;
+}
+
+.transactions--box {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 30px;
+}
+
+.transaction {
+
+    width: 50%;
+    background-color: #f7f7f7;
+    border: 1px solid black;
+    box-shadow: 0 0.2rem 1rem rgba(0, 0, 0, 0.25);
+    padding: 20px 20px;
+}
+
+@media(max-width: 800px) {
+    .transaction {
+        width: 80%;
+        transition: all 1s;
+    }
+}
+
+select {
+    margin-bottom: 30px;
+}
+
+.page-btn-section {
+    font: inherit;
+    height: 6rem;
+    margin-top: 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: end;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+
+.btn-container {
+    background: #f7f7f7;
+    border-radius: 0.25rem;
+}
+
+.pageBtn {
+    background: transparent;
+    border-color: transparent;
+    width: 50px;
+    height: 40px;
+    font-weight: 700;
+    font-size: 1.25rem;
+    color: #0d47a1;
+    transition: 0.3s ease-in-out all;
+    border-radius: 0.25rem;
+    cursor: pointer;
+}
+
+.btn-active {
+    background: #0d47a1;
+    color: #fff;
+}
+
+.prev-btn,
+.next-btn {
+    width: 100px;
+    height: 40px;
+    background: #f7f7f7;
+    border-color: transparent;
+    border-radius: 0.25rem;
+    color: #0d47a1;
+    text-transform: capitalize;
+    letter-spacing: 1px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    cursor: pointer;
+    transition: 0.3s ease-in-out all;
+}
+
+.prev-btn:hover,
+.next-btn:hover {
+    background: #0d47a1;
+    color: #fff;
+}
