@@ -52,7 +52,6 @@ export async function loader({ req, params }) {
     );
   } else {
     const resData = await response.json();
-    console.log(resData);
     return resData;
   }
 }

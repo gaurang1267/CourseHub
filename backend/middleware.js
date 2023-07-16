@@ -1,7 +1,7 @@
 const { promisify } = require('util');
 const ExpressError = require("./utils/ExpressError");
 const catchAsync = require("./utils/catchAsync");
-const jwt = require('jsonwebtoken');
+const jose = require('jose');
 const User = require('./models/users');
 const course = require('./models/courses');
 
@@ -16,8 +16,10 @@ module.exports.protect = catchAsync(async (req, res, next) => {
         return next(new ExpressError('You are not logged in! Please log in to get access', 401));
     }
 
-    const decoded = await promisify(jwt.verify)(token, process.env.JWT_SECRET);
-    // console.log(decoded);
+    const decoded = await jose.jwtVerify(
+        jwtToken, new TextEncoder().encode(process.env.JWT_SECRET)
+    );
+    console.log(decoded);
 
     const currentUser = await User.findById(decoded.id);
     if (!currentUser) {

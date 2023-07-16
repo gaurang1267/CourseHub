@@ -2,15 +2,11 @@ const express = require('express');
 const catchAsync = require('./../utils/catchAsync');
 const ExpressError = require('./../utils/ExpressError');
 const user = require('./../models/users');
-const jwt = require('jsonwebtoken');
+const jose = require('jose');
 const { protect, restrictTo } = require('./../middleware');
 const axios = require('axios');
 
 const router = express.Router();
-
-const signToken = id => {
-    return jwt.sign({ id: id }, process.env.JWT_SECRET, { expiresIn: process.env.JWT_EXPIRES_IN });
-}
 
 router.post('/register', catchAsync(async (req, res, next) => {
     const newUser = new user({
@@ -24,7 +20,10 @@ router.post('/register', catchAsync(async (req, res, next) => {
     }
     const savedUser = await newUser.save();
 
-    const token = signToken(newUser._id);
+    const token = await new jose.SignJWT({ userId: newUser._id }).setProtectedHeader({ alg: 'HS256' })
+        .setIssuedAt()
+        .setExpirationTime(process.env.JWT_EXPIRES_IN)
+        .sign(new TextEncoder().encode(process.env.JWT_SECRET));
     res.cookie('jwt', token, {
         expires: new Date(Date.now() + process.env.JWT_COOKIE_EXPIRES_IN * 24 * 60 * 60 * 1000),
         httpOnly: true
@@ -45,7 +44,10 @@ router.post('/artists-register', catchAsync(async (req, res, next) => {
         logo: req.body.logo,
         role: 'artist',
     })
-    const token = signToken(newUser._id);
+    const token = await new jose.SignJWT({ userId: newUser._id }).setProtectedHeader({ alg: 'HS256' })
+        .setIssuedAt()
+        .setExpirationTime(process.env.JWT_EXPIRES_IN)
+        .sign(new TextEncoder().encode(process.env.JWT_SECRET));
     res.cookie('jwt', token, {
         expires: new Date(Date.now() + process.env.JWT_COOKIE_EXPIRES_IN * 24 * 60 * 60 * 1000),
         httpOnly: true
@@ -66,7 +68,10 @@ router.post('/login', catchAsync(async (req, res, next) => {
     if (!User || !await User.correctPassword(password, User.password)) {
         return next(new ExpressError('Invalid username or password', 401));
     }
-    const token = signToken(User._id);
+    const token = await new jose.SignJWT({ userId: User._id }).setProtectedHeader({ alg: 'HS256' })
+        .setIssuedAt()
+        .setExpirationTime(process.env.JWT_EXPIRES_IN)
+        .sign(new TextEncoder().encode(process.env.JWT_SECRET));
     res.cookie('jwt', token, {
         expires: new Date(Date.now() + process.env.JWT_COOKIE_EXPIRES_IN * 24 * 60 * 60 * 1000),
         httpOnly: true
