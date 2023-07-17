@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import {
   Form,
   useNavigate,
@@ -7,18 +7,25 @@ import {
   json,
   redirect,
 } from "react-router-dom";
-import { getAuthToken } from "../Utils/Auth";
+import { getAuthToken, getUserFromLocalStorage } from "../Utils/Auth";
 import "./CourseForm.css";
 
 const CourseForm = ({ method, course }) => {
   const data = useActionData();
   const navigate = useNavigate();
   const navigation = useNavigation();
+  const { isApproved } = getUserFromLocalStorage();
 
   const isSubmitting = navigation.state === "submitting";
 
   function cancelHandler() {
     navigate("..");
+  }
+  console.log(isApproved);
+  if (!isApproved) {
+    useEffect(() => {
+      navigate("..");
+    });
   }
   return (
     <div className="form">

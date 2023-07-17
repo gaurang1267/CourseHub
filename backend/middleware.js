@@ -17,11 +17,11 @@ module.exports.protect = catchAsync(async (req, res, next) => {
     }
 
     const decoded = await jose.jwtVerify(
-        jwtToken, new TextEncoder().encode(process.env.JWT_SECRET)
+        token, new TextEncoder().encode(process.env.JWT_SECRET)
     );
     console.log(decoded);
 
-    const currentUser = await User.findById(decoded.id);
+    const currentUser = await User.findById(decoded.payload.userId);
     if (!currentUser) {
         return next(new ExpressError('The user belonging to this token no longer exists.', 401));
     }

@@ -54,18 +54,16 @@ const MainNavigation = () => {
                 </NavLink>
               </li>
             )}
-            {token &&
-              (role === "admin" ||
-                (role === "artist" && isApproved === "true")) && (
-                <li onClick={() => setShowMediaIcons(!showMediaIcons)}>
-                  <NavLink
-                    to="/courses/new"
-                    className={({ isActive }) => (isActive ? "active" : "")}
-                  >
-                    New Course
-                  </NavLink>
-                </li>
-              )}
+            {token && (role === "admin" || role === "artist") && (
+              <li onClick={() => setShowMediaIcons(!showMediaIcons)}>
+                <NavLink
+                  to="/courses/new"
+                  className={({ isActive }) => (isActive ? "active" : "")}
+                >
+                  New Course
+                </NavLink>
+              </li>
+            )}
             {!token && (
               <>
                 <li onClick={() => setShowMediaIcons(!showMediaIcons)}>

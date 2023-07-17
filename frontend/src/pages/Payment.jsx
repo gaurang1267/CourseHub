@@ -15,9 +15,11 @@ export default Payment;
 export async function loader({ request, params }) {
   const id = params.courseId;
   const token = getAuthToken();
-  const { user_id: _id } = getUserFromLocalStorage();
+  console.log(getUserFromLocalStorage());
+  const { _id } = getUserFromLocalStorage();
+  console.log(_id);
   const postData = {
-    user: user_id,
+    user: _id,
   };
   const responsePost = await fetch(
     "http://localhost:3000/api/v1/courses/" + id + "/payment",
@@ -39,7 +41,6 @@ export async function loader({ request, params }) {
     );
   } else {
     const resDataPost = await responsePost.json();
-    console.log(resDataPost);
   }
 
   return null;

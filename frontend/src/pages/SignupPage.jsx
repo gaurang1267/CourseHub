@@ -1,6 +1,7 @@
 import React from "react";
 import Signup from "../components/Signup";
 import { redirect, json } from "react-router-dom";
+import { addUsertoLocalStorage } from "../Utils/Auth";
 
 const SignupPage = () => {
   return <Signup />;
